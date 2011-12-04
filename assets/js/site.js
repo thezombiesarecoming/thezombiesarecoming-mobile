@@ -8,12 +8,20 @@ $("#carlist").live("pageinit", function() {
 	wilco.initChecklist("carlistItems");
 });
 
+$("#petlist").live("pageinit", function() {
+	wilco.initChecklist("petlistItems");
+});
+
 $("#checklist ul.prepare-checks li").live("click", function() {
 	wilco.setChecked($(this),"checklistItems");
 });
 
 $("#carlist ul.prepare-checks li").live("click", function() {
 	wilco.setChecked($(this),"carlistItems");
+});
+
+$("#petlist ul.prepare-checks li").live("click", function() {
+	wilco.setChecked($(this),"petlistItems");
 });
 
 wilco.setChecked = function($t, store) {
