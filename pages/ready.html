@@ -15,7 +15,7 @@
 </head> 
 <body> 
 
-<div data-role="page" data-theme="b" id="home">
+<div data-role="page" data-theme="b" id="ready">
         <div data-role="header" data-theme="b">
             <div data-role="navbar">
                 <ul>
@@ -40,13 +40,17 @@
         </div>
         <div data-role="content">
             <div class="dashboard">
-                <a href="home.html" class="main-btn">Home</a> 
-                <a href="ready.html" class="main-btn">Be Ready</a>
-                <a href="local.html" class="main-btn">Local</a>
-                <a href="optin.html" class="main-btn">Opt-In</a>
-                <a href="info.html" class="main-btn">Info</a>
-            </div>                        
-          
+                <a href="checklist.html" class="main-btn">Checklist</a> 
+                <a href="threats.html" class="main-btn">Threats</a>
+                <a href="local-contacts.html" class="main-btn">Local Contacts</a>
+            </div> 
+            <div id="ready-list">
+                <ul data-role="listview" data-theme="b">
+                    {{each item in readylist}}
+                    <li><a href="#">{{=item.label}}</a></li>
+                    {{/each}}                  
+                </ul>
+            </div>
         </div>
         <div data-role="footer" data-position="fixed">
         </div>

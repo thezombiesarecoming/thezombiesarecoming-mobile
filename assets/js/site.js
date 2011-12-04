@@ -1,12 +1,5 @@
 var wilco = {};
 
-/*$( '#checklist' ).live( 'pageinit',function(event,data){
-    var theList = doT.template($("#checklist-list").html());
-  $.get("someurl",function(res){
-      $("#checklist-list").html(theList(res));
-  })
-});*/
-
 $("#checklist").live("pageinit", function() {
 	var lists = $("ul.prepare-checks");
 	lists.find("div.ui-checkbox").hide();
@@ -49,4 +42,3 @@ wilco.saveChecklist = function() {
 	}
 	localStorage.checklistItems = items;
 }
-
