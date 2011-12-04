@@ -1,20 +1,19 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>Preparing Wilco</title> 
+	<title>Preparedness Checklist</title> 
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-	<link rel="stylesheet" href="../assets/css/site.css" />
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.min.js"></script>
-    <script type="text/javascript" src="../assets/js/doT.js"></script>
-    <script type="text/javascript" src="../assets/js/site.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        <script type="text/javascript" src="../assets/js/doT.js"></script>
+        <script type="text/javascript" src="../assets/js/site.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
 </head> 
 <body> 
 
-<div data-role="page" data-theme="b" id="home">
+<div data-role="page" data-theme="b" id="optin">
         <div data-role="header" data-theme="b">
             <div data-role="navbar">
                 <ul>
@@ -35,17 +34,13 @@
                     </li>
                 </ul>
             </div>
-            <h1>Preparing Wilco</h1>
+            <h1>Get Notifed!</h1>
         </div>
         <div data-role="content">
-            <div class="dashboard">
-                <a href="home.html" class="main-btn">Home</a> 
-                <a href="ready.html" class="main-btn">Be Ready</a>
-                <a href="local.html" class="main-btn">Local</a>
-                <a href="optin.html" class="main-btn">Opt-In</a>
-                <a href="info.html" class="main-btn">Info</a>
-            </div>                        
-          
+            <div data-role="field-contain">
+                <label for="basic">Email address:</label>
+                <input type="text" name="email" id="basic" value=""  />
+            </div>
         </div>
         <div data-role="footer" data-position="fixed">
         </div>
