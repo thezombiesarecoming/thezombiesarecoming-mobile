@@ -37,7 +37,7 @@ $("ul.prepare-checks li").live("click", function() {
 	}
 	wilco.saveTimer = setTimeout(function() {
 		wilco.saveChecklist();
-	}, 5000);
+	}, 1000);
 });
 
 wilco.saveChecklist = function() {
