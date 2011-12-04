@@ -1,25 +1,24 @@
 var wilco = {};
 
 $("#checklist").live("pageinit", function() {
-	var lists = $("ul.prepare-checks");
-	lists.find("div.ui-checkbox").hide();
-	$("span.ui-icon-shadow").removeClass("ui-icon-check ui-icon");
-	if (localStorage && localStorage.checklistItems) {
-		var checkedItems = localStorage.checklistItems.split(","),
-			i = 0,
-			chk;
-		for ( ; i < checkedItems.length; i++ ) {
-			console.log(checkedItems[i]);
-			chk = $("input[value=" + checkedItems[i] + "]");
-			chk.attr("checked","true");
-			chk.closest("li").find("span.ui-icon-shadow").addClass("ui-icon-check ui-icon");
-		}
-	}
+	wilco.initChecklist("checklistItems");
 });
 
-$("ul.prepare-checks li").live("click", function() {
-	var iconSpan = $(this).find("span.ui-icon-shadow"),
-		chk = $(this).find("input")[0];
+$("#carlist").live("pageinit", function() {
+	wilco.initChecklist("carlistItems");
+});
+
+$("#checklist ul.prepare-checks li").live("click", function() {
+	wilco.setChecked($(this),"checklistItems");
+});
+
+$("#carlist ul.prepare-checks li").live("click", function() {
+	wilco.setChecked($(this),"carlistItems");
+});
+
+wilco.setChecked = function($t, store) {
+	var iconSpan = $t.find("span.ui-icon-shadow"),
+		chk = $t.find("input")[0];
 	if (wilco.saveTimer) clearTimeout(wilco.saveTimer);
 	if (chk.checked) {
 		$(chk).removeAttr("checked");
@@ -29,16 +28,33 @@ $("ul.prepare-checks li").live("click", function() {
 		iconSpan.addClass("ui-icon-check ui-icon");
 	}
 	wilco.saveTimer = setTimeout(function() {
-		wilco.saveChecklist();
+		wilco.saveChecklist(store);
 	}, 1000);
-});
+};
 
-wilco.saveChecklist = function() {
+wilco.initChecklist = function(store) {
+	var lists = $("ul.prepare-checks");
+	lists.find("div.ui-checkbox").hide();
+	$("span.ui-icon-shadow").removeClass("ui-icon-check ui-icon");
+	if (localStorage && localStorage[store]) {
+		var checkedItems = localStorage[store].split(","),
+			i = 0,
+			chk;
+		for ( ; i < checkedItems.length; i++ ) {
+			console.log(checkedItems[i]);
+			chk = $("input[value=" + checkedItems[i] + "]");
+			chk.attr("checked","true");
+			chk.closest("li").find("span.ui-icon-shadow").addClass("ui-icon-check ui-icon");
+		}
+	}
+};
+
+wilco.saveChecklist = function(store) {
 	var chks = $("input:checked"),
 		items = [],
 		i = 0;
 	for ( ; i < chks.length; i++ ) {
 		items.push(chks[i].value);
 	}
-	localStorage.checklistItems = items;
-}
+	localStorage[store] = items;
+};
